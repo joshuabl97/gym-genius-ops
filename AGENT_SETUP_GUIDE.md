@@ -43,6 +43,290 @@ Used for technical development across the Gym Vision ecosystem.
 
 ---
 
+## Configuring Agent Specialization in Claude Code
+
+Claude Code agents can be configured to specialize in specific task types through several mechanisms.
+
+### Method 1: CLAUDE.md Files (Automatic Context)
+
+Claude Code automatically reads `CLAUDE.md` files at startup. Use these to give agents persistent knowledge.
+
+**Project-level CLAUDE.md** (read by all agents in the repo):
+```
+~/Code/gym-genius-ops/CLAUDE.md
+```
+
+**Agent-specific CLAUDE.md** (read when working in that directory):
+```
+~/Code/gym-genius-ops/deliverables/research/CLAUDE.md
+~/Code/gym-genius-ops/deliverables/investor/CLAUDE.md
+```
+
+### Step 1: Create Project-Level CLAUDE.md
+
+```bash
+cat > ~/Code/gym-genius-ops/CLAUDE.md << 'EOF'
+# Gym Genius Ops - Project Context
+
+## What This Is
+Pre-investment GTM strategy and operations for Gym Genius - an automatic workout tracking system for commercial gyms using computer vision.
+
+## Key Documents
+- docs/gym_genius_executive_summary.md - One-pager overview
+- docs/gym_genius_strategic_questions.md - 30 Q&A defining strategy
+- docs/gym_genius_action_plan.md - Full ticket breakdown
+
+## Business Context
+- Target: Premium/luxury gyms (Equinox, Lifetime, high-end independents)
+- Model: Platform + Data hybrid (like Strava for strength training)
+- Pricing: Hardware lease (~$300/mo) + Software subscription (~$500/mo)
+- Privacy: No video stored, opt-in consent, on-premise processing
+
+## Working Conventions
+- Create deliverables in deliverables/<agent-folder>/
+- Use markdown for documents
+- Close GitHub issues when tickets complete: gh issue close <NUM>
+- Commit deliverables after completion
+EOF
+```
+
+### Step 2: Create Agent-Specific CLAUDE.md Files
+
+**Research Agent:**
+```bash
+cat > ~/Code/gym-genius-ops/deliverables/research/CLAUDE.md << 'EOF'
+# Research Agent Context
+
+## Your Role
+You are the Research Agent specializing in market research, customer discovery, competitive analysis, and business model validation.
+
+## Your Expertise
+- Customer discovery interviews and synthesis
+- Market sizing and segmentation
+- Competitive landscape analysis
+- Unit economics modeling
+- Pricing strategy research
+
+## Your Tickets
+- RESEARCH-002: Gym Owner Customer Discovery
+- RESEARCH-004: Deployment Model Research
+- RESEARCH-005: Target Segment Analysis
+- RESEARCH-006: Demo Lab Cost Analysis
+- RESEARCH-007: Platform vs White-Label Validation
+- RESEARCH-009: Pricing, Tiers & Unit Economics
+- RESEARCH-012: Moat & Defensibility Strategy
+
+## Output Standards
+- Use data and citations where possible
+- Create actionable recommendations
+- Format: Markdown with clear sections
+- Include "Key Findings" and "Recommendations" sections
+- Save files as: <topic>-research.md or <topic>-analysis.md
+
+## Resources to Reference
+- docs/gym_genius_strategic_questions.md (Q&A with founder)
+- docs/gym_genius_executive_summary.md (business overview)
+EOF
+```
+
+**Investor Agent:**
+```bash
+cat > ~/Code/gym-genius-ops/deliverables/investor/CLAUDE.md << 'EOF'
+# Investor Agent Context
+
+## Your Role
+You are the Investor Agent specializing in fundraising materials, pitch preparation, and investor communications.
+
+## Your Expertise
+- Pitch deck creation and storytelling
+- Financial modeling for startups
+- VC meeting preparation
+- Investor Q&A anticipation
+- Market positioning narratives
+
+## Your Tickets
+- INVESTOR-001: Pitch Deck
+- INVESTOR-003: Equinox-Specific Prep
+- INVESTOR-004: VC Meeting Prep
+- INVESTOR-005: Elevator Pitch & Founder Story
+
+## Output Standards
+- Clear, compelling narratives
+- Data-backed claims
+- Anticipate investor questions
+- Format: Markdown for drafts, note slide structure
+- Save files as: pitch-deck.md, elevator-pitch.md, vc-prep.md
+
+## Key Messages to Convey
+- "Strava for strength training"
+- Why now: Tech costs down, AI accuracy up, niche ignored by big players
+- Target: Premium gyms ($150-300/mo membership)
+- Privacy-first: No video stored
+EOF
+```
+
+**Partner Agent:**
+```bash
+cat > ~/Code/gym-genius-ops/deliverables/partner/CLAUDE.md << 'EOF'
+# Partner Agent Context
+
+## Your Role
+You are the Partner Agent specializing in gym partnership development, sales materials, and pilot program design.
+
+## Your Expertise
+- B2B sales materials
+- Partnership structure design
+- Pilot program frameworks
+- ROI calculators and business cases
+- Objection handling guides
+
+## Your Tickets
+- PARTNER-001: Gym Partnership Deck
+- PARTNER-002: Pilot Program Structure
+
+## Output Standards
+- Gym-owner focused language (not technical)
+- Clear value propositions
+- Easy to understand pricing
+- Format: Markdown, structured for easy conversion to slides
+- Save files as: partnership-deck.md, pilot-program.md
+
+## Value Props to Emphasize
+- Member retention ("their data lives here")
+- Premium differentiation
+- Zero friction for members
+- Trainer insights (not replacement)
+EOF
+```
+
+### Method 2: Memory Files (Agent Learning)
+
+Create files that agents update as they learn, persisting knowledge across sessions.
+
+**Create a learnings file for each agent:**
+```bash
+touch ~/Code/gym-genius-ops/deliverables/research/LEARNINGS.md
+touch ~/Code/gym-genius-ops/deliverables/investor/LEARNINGS.md
+touch ~/Code/gym-genius-ops/deliverables/partner/LEARNINGS.md
+```
+
+**Instruct agents to update learnings:**
+```bash
+claude "After completing each task, update LEARNINGS.md with:
+- Key insights discovered
+- Useful resources found
+- Patterns that worked well
+- Things to avoid next time"
+```
+
+**Example LEARNINGS.md structure:**
+```markdown
+# Research Agent Learnings
+
+## Customer Discovery
+- Gym owners care most about member retention metrics
+- "Premium experience" resonates better than "cost savings"
+- [Add more as discovered...]
+
+## Market Research
+- IBISWorld has good gym industry reports
+- [Add resources as discovered...]
+
+## Effective Approaches
+- Start with pain points, not features
+- [Add patterns as discovered...]
+```
+
+### Method 3: Slash Commands (Agent Workflows)
+
+Create custom slash commands for common agent tasks.
+
+**Create commands directory:**
+```bash
+mkdir -p ~/Code/gym-genius-ops/.claude/commands
+```
+
+**Research Agent commands:**
+```bash
+cat > ~/Code/gym-genius-ops/.claude/commands/research-start.md << 'EOF'
+Read the CLAUDE.md in deliverables/research/ to understand your role as the Research Agent.
+Then read LEARNINGS.md to see what you've learned from previous tasks.
+Finally, check the GitHub issue for the ticket you're working on.
+EOF
+
+cat > ~/Code/gym-genius-ops/.claude/commands/research-complete.md << 'EOF'
+Before finishing:
+1. Update deliverables/research/LEARNINGS.md with key insights from this task
+2. Commit your deliverable: git add deliverables/research/ && git commit -m "Add <deliverable>"
+3. Close the GitHub issue: gh issue close <NUM>
+4. Summarize what was completed and any follow-up recommendations
+EOF
+```
+
+**Usage:**
+```bash
+claude
+> /research-start
+> [work on task]
+> /research-complete
+```
+
+### Method 4: Agent Startup Scripts
+
+Create shell scripts that start agents with full context.
+
+```bash
+cat > ~/Code/gym-genius-ops/scripts/start-research-agent.sh << 'EOF'
+#!/bin/bash
+cd ~/Code/gym-genius-ops
+echo "Starting Research Agent..."
+echo "Reading context from CLAUDE.md files..."
+
+claude "You are the Research Agent for Gym Genius.
+
+FIRST, read these files to understand your role and context:
+1. Read CLAUDE.md (project context)
+2. Read deliverables/research/CLAUDE.md (your specialization)
+3. Read deliverables/research/LEARNINGS.md (your accumulated knowledge)
+4. Read docs/gym_genius_strategic_questions.md (business context)
+
+THEN, tell me what ticket you should work on next by checking:
+gh issue list --repo joshuabl97/gym-genius-ops --label 'workstream:research' --state open
+
+When you complete a task, always update LEARNINGS.md with new insights."
+EOF
+chmod +x ~/Code/gym-genius-ops/scripts/start-research-agent.sh
+```
+
+### Method 5: Shared Knowledge Base
+
+Create a knowledge base that all agents can reference and contribute to.
+
+```bash
+mkdir -p ~/Code/gym-genius-ops/knowledge
+
+# Create shared knowledge files
+cat > ~/Code/gym-genius-ops/knowledge/README.md << 'EOF'
+# Shared Knowledge Base
+
+Files in this directory are shared across all agents.
+
+| File | Purpose |
+|------|---------|
+| competitors.md | Competitive intelligence |
+| gym-contacts.md | Gym owner contacts and notes |
+| pricing-data.md | Pricing research and comparisons |
+| resources.md | Useful links and references |
+EOF
+
+touch ~/Code/gym-genius-ops/knowledge/competitors.md
+touch ~/Code/gym-genius-ops/knowledge/gym-contacts.md
+touch ~/Code/gym-genius-ops/knowledge/pricing-data.md
+touch ~/Code/gym-genius-ops/knowledge/resources.md
+```
+
+---
+
 ## Setting Up Agents in GitHub Projects
 
 ### Step 1: Create the Agent Field
