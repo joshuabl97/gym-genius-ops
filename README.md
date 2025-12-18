@@ -13,6 +13,7 @@ Operations repository for Gym Genius GTM strategy and development coordination.
 
 | Guide | Purpose |
 |-------|---------|
+| [Agent Setup Guide](AGENT_SETUP_GUIDE.md) | How to configure and run agents |
 | [GTM Operator Guide](OPERATOR_GUIDE.md) | Multi-agent workflow for GTM tickets |
 | [Gym Vision Operator Guide](GYM_VISION_OPERATOR_GUIDE.md) | Multi-agent workflow for development tickets |
 
