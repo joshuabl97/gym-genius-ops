@@ -1,12 +1,22 @@
 # Gym Genius Ops
 
-Non-code operations repository for Gym Genius GTM strategy.
+Operations repository for Gym Genius GTM strategy and development coordination.
 
-## Project Board
+## Project Boards
 
-[Gym Genius GTM Strategy](https://github.com/users/joshuabl97/projects/2)
+| Board | Purpose |
+|-------|---------|
+| [Gym Genius GTM Strategy](https://github.com/users/joshuabl97/projects/2) | Pre-investment GTM tickets |
+| [Gym Vision Development](https://github.com/users/joshuabl97/projects/1) | Technical development tickets |
 
-## Documents
+## Operator Guides
+
+| Guide | Purpose |
+|-------|---------|
+| [GTM Operator Guide](OPERATOR_GUIDE.md) | Multi-agent workflow for GTM tickets |
+| [Gym Vision Operator Guide](GYM_VISION_OPERATOR_GUIDE.md) | Multi-agent workflow for development tickets |
+
+## Strategy Documents
 
 | Document | Purpose |
 |----------|---------|
