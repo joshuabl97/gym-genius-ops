@@ -9,19 +9,31 @@ Operations repository for Gym Genius - Equipment Utilization Analytics with futu
 | **Equipment Utilization (EU)** | B2B analytics for gym operators | PRIMARY |
 | **Workout Tracking (WT)** | Member experience, future upsell | SECONDARY |
 
-## Project Boards
+## Where Things Live
 
+| System | What's There |
+|--------|--------------|
+| **Notion** | CRM, GTM tickets, sales pipeline, business operations |
+| **GitHub** | Dev tickets only (EU-*, WT-*, DASH-*) |
+
+### GitHub (Dev Only)
 | Board | Purpose |
 |-------|---------|
 | [Gym Vision Development](https://github.com/users/joshuabl97/projects/1) | Technical tickets (EU-*, WT-*, DASH-*) |
-| [Gym Genius GTM Strategy](https://github.com/users/joshuabl97/projects/2) | Business development tickets |
 
-## Operator Guides
+### Notion (Business + CRM)
+- Sales Pipeline (Gyms, Contacts, Deals)
+- GTM Initiatives (migrated from GitHub)
+- Activities tracking
+- Business operations
+
+## Guides
 
 | Guide | Purpose |
 |-------|---------|
-| [Dual-Track Operator Guide](OPERATOR_GUIDE.md) | How to work on EU (primary) and WT (secondary) |
-| [Gym Vision Development Guide](GYM_VISION_OPERATOR_GUIDE.md) | Technical development workflow |
+| [Operator Guide](OPERATOR_GUIDE.md) | How to work on EU (primary) and WT (secondary) |
+| [Agent Setup Guide](AGENT_SETUP_GUIDE.md) | Claude Code agent configuration |
+| [Notion CRM Setup](docs/notion_setup_steps.md) | CRM database setup instructions |
 
 ## Strategy Documents
 
@@ -30,17 +42,6 @@ Operations repository for Gym Genius - Equipment Utilization Analytics with futu
 | [Action Plan](docs/gym_genius_action_plan.md) | EU-first GTM strategy |
 | [Strategic Questions](docs/gym_genius_strategic_questions.md) | Business decisions and rationale |
 | [Executive Summary](docs/gym_genius_executive_summary.md) | One-pager overview |
-
-## Workstreams
-
-| Workstream | Description | Track |
-|------------|-------------|-------|
-| EU-SALES | Equipment Utilization sales & pilots | Primary |
-| EU-PARTNER | Gym partnership materials | Primary |
-| INVESTOR | Investor preparation | Primary |
-| RESEARCH | Market research & validation | Primary |
-| BIZ | Business operations | Primary |
-| WT-CONTENT | Workout tracking demo content | Secondary |
 
 ## Related Repositories
 
