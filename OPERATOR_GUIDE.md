@@ -1,34 +1,86 @@
-# Gym Genius GTM - Operator Guide
+# Gym Genius GTM - Dual-Track Operator Guide
 
-This guide walks you through executing the GTM strategy using 2-3 concurrent Claude Code agents.
+This guide walks you through executing the EU-first GTM strategy using 2-3 concurrent Claude Code agents.
 
-**Last Updated:** 2025-12-18
+**Last Updated:** 2025-12-20
+
+---
+
+## Strategy Overview
+
+### Dual-Track Development
+
+| Track | Priority | Focus |
+|-------|----------|-------|
+| **Equipment Utilization (EU)** | PRIMARY | B2B analytics for gym operators - ship for revenue |
+| **Workout Tracking (WT)** | SECONDARY | Member experience - build for fun, future upsell |
+
+### Decision Flowchart
+
+```
+Is the task EU-related?
+├── YES → Do it now (PRIMARY)
+└── NO → Is it WT-related?
+    ├── YES → Is EU work blocked or complete?
+    │   ├── YES → Work on WT (fun project)
+    │   └── NO → Defer, work on EU first
+    └── NO → Evaluate priority
+```
 
 ---
 
 ## Current State
 
-### Project Overview
-- **Repository:** [gym-genius-ops](https://github.com/joshuabl97/gym-genius-ops)
-- **Project Board:** [Gym Genius GTM Strategy](https://github.com/users/joshuabl97/projects/2)
-- **Total Tickets:** 39
-- **Critical/High Priority:** 17 (assigned to agents)
-- **Medium/Low Priority:** 22 (unassigned)
+### Project Boards
+| Board | Purpose | Tickets |
+|-------|---------|---------|
+| [Gym Vision Development](https://github.com/users/joshuabl97/projects/1) | Technical (EU-*, WT-*, DASH-*) | ~29 |
+| [Gym Genius GTM Strategy](https://github.com/users/joshuabl97/projects/2) | Business development | ~24 |
 
-### Ticket Status
-| Status | Count |
-|--------|-------|
-| Todo | 38 |
-| In Progress | 1 (#14 RESEARCH-002) |
-| Done | 0 |
+### Labels for Filtering
+| Label | Meaning |
+|-------|---------|
+| `track:eu-gtm` | Equipment Utilization GTM work |
+| `track:wt-future` | Workout Tracking (future/secondary) |
+| `status:needs-update` | Content needs EU strategy update |
 
-### Agent Assignments
-| Agent | Tickets | Focus |
-|-------|---------|-------|
-| **Research Agent** | #14, #16, #17, #18, #19, #21, #24 | Customer discovery, market research, unit economics |
-| **Investor Agent** | #8, #10, #11, #12 | Pitch deck, VC prep, Equinox prep |
-| **Partner Agent** | #34, #35 | Gym partnership materials, pilot program |
-| **Demo Agent** | #1, #2, #4, #5 | Lab setup, hardware, video content |
+---
+
+## EU-First Batch Order
+
+### Batch 1: Foundation (Start Here)
+| Terminal | Issue | Ticket | Notes |
+|----------|-------|--------|-------|
+| 1 | #44 | GTM-001: EU Value Proposition | Core sales document |
+| 2 | #42 | GTM-004: EU Pricing Sheet | Needed for sales |
+| 3 | #9 | INVESTOR-002: Financial Model | Update for EU economics |
+
+### Batch 2: Sales Enablement
+| Terminal | Issue | Ticket | Notes |
+|----------|-------|--------|-------|
+| 1 | #40 | GTM-002: EU Sales Playbook | Outreach templates |
+| 2 | #34 | PARTNER-001: Partnership Deck | Update for EU focus |
+| 3 | #35 | PARTNER-002: Pilot Program | EU pilot structure |
+
+### Batch 3: Investor Prep
+| Terminal | Issue | Ticket | Notes |
+|----------|-------|--------|-------|
+| 1 | #8 | INVESTOR-001: Pitch Deck | Reframe for EU-first |
+| 2 | #10 | INVESTOR-003: Equinox Prep | EU pilot pitch |
+| 3 | #12 | INVESTOR-005: Elevator Pitch | Rewrite for EU |
+
+### Batch 4: Research & Validation
+| Terminal | Issue | Ticket | Notes |
+|----------|-------|--------|-------|
+| 1 | #14 | RESEARCH-002: Gym Owner Discovery | Expand EU questions |
+| 2 | #13 | RESEARCH-001: Competitive Deep Dive | Add EU competitors |
+| 3 | #21 | RESEARCH-009: Pricing & Unit Economics | Focus on EU |
+
+### Batch 5: Cleanup
+| Terminal | Issue | Ticket | Notes |
+|----------|-------|--------|-------|
+| 1 | #36 | PARTNER-003: Deployment Calculator | EU-only costs |
+| 2 | #29 | BIZ-002: Budget & Runway | Update for EU model |
 
 ---
 
@@ -36,135 +88,93 @@ This guide walks you through executing the GTM strategy using 2-3 concurrent Cla
 
 ### Step 1: Open Terminal Windows
 
-Open 2-3 separate terminal windows or tabs. Each will run an independent Claude Code session.
+Open 2-3 separate terminal windows. Each runs an independent Claude Code session.
 
-### Step 2: Start Batch 1 (First Priority)
+### Step 2: Start EU Batch
 
-**Terminal 1 - Research Agent:**
+**Terminal 1 - GTM Agent:**
 ```bash
 cd /home/josh/Code/gym-genius-ops
-claude "I'm working on the Gym Genius GTM Strategy. Help me complete issue #21 (RESEARCH-009: Pricing, Tiers & Unit Economics). Read the docs in docs/ for context about the business model and strategic decisions. Create deliverables in deliverables/research/. When done, close the issue with: gh issue close 21"
+claude "I'm working on the Gym Genius EU-first GTM Strategy. Help me complete issue #44 (GTM-001: EU Value Proposition Document). Read docs/ for context about Equipment Utilization focus. Create deliverables in deliverables/eu-sales/. When done, close the issue."
 ```
 
-**Terminal 2 - Investor Agent:**
+**Terminal 2 - Pricing Agent:**
 ```bash
 cd /home/josh/Code/gym-genius-ops
-claude "I'm working on the Gym Genius GTM Strategy. Help me complete issue #8 (INVESTOR-001: Pitch Deck). Read the docs in docs/ for context - especially the executive summary and strategic questions. Create deliverables in deliverables/investor/. When done, close the issue with: gh issue close 8"
+claude "I'm working on the Gym Genius EU-first GTM Strategy. Help me complete issue #42 (GTM-004: EU Pricing Sheet). Read docs/ for context. Create deliverables in deliverables/eu-sales/. When done, close the issue."
 ```
 
-**Terminal 3 - Partner Agent:**
+**Terminal 3 - Investor Agent:**
 ```bash
 cd /home/josh/Code/gym-genius-ops
-claude "I'm working on the Gym Genius GTM Strategy. Help me complete issue #34 (PARTNER-001: Gym Partnership Deck). Read the docs in docs/ for context about target gyms and value props. Create deliverables in deliverables/partner/. When done, close the issue with: gh issue close 34"
+claude "I'm working on the Gym Genius EU-first GTM Strategy. Help me complete issue #9 (INVESTOR-002: Financial Model). Read docs/ for context. Update the model for EU unit economics. Create deliverables in deliverables/investor/. When done, close the issue."
 ```
 
 ### Step 3: Monitor Progress
 
-Switch between terminals to check progress. Each agent works independently.
-
-**Check remaining tickets:**
+Check remaining EU tickets:
 ```bash
-gh issue list --repo joshuabl97/gym-genius-ops --state open --label "priority:critical" --label "priority:high"
+gh issue list --repo joshuabl97/gym-genius-ops --state open --label "track:eu-gtm"
 ```
 
-**View project board:**
-Open https://github.com/users/joshuabl97/projects/2 and use the "By Agent" view.
+Check which need content updates:
+```bash
+gh issue list --repo joshuabl97/gym-genius-ops --state open --label "status:needs-update"
+```
 
 ### Step 4: After Each Ticket Completes
 
-When an agent finishes a ticket:
-
-1. **Review the deliverable** in the appropriate `deliverables/` folder
-2. **Close the issue** (agent should do this, or run manually):
-   ```bash
-   gh issue close <number> --repo joshuabl97/gym-genius-ops
-   ```
-3. **Commit the deliverable:**
+1. **Review the deliverable** in `deliverables/<folder>/`
+2. **Commit and push:**
    ```bash
    git add deliverables/
-   git commit -m "Add deliverable for TICKET-NAME"
+   git commit -m "Add deliverable for <TICKET-ID>"
    git push
    ```
-4. **Start the next ticket** in that terminal (see Batch Order below)
-
-### Step 5: Continue with Next Batches
-
-Once Batch 1 completes, start Batch 2, and so on.
+3. **Start the next ticket** from batch order
 
 ---
 
-## Batch Order
+## When to Work on Workout Tracking
 
-### Batch 1 (Start Here)
-| Terminal | Issue | Ticket |
-|----------|-------|--------|
-| 1 | #21 | RESEARCH-009: Pricing, Tiers & Unit Economics |
-| 2 | #8 | INVESTOR-001: Pitch Deck |
-| 3 | #34 | PARTNER-001: Gym Partnership Deck |
+WT is the secondary/passion track. Work on it when:
 
-### Batch 2
-| Terminal | Issue | Ticket |
-|----------|-------|--------|
-| 1 | #14 | RESEARCH-002: Gym Owner Customer Discovery |
-| 2 | #10 | INVESTOR-003: Equinox-Specific Prep |
-| 3 | #35 | PARTNER-002: Pilot Program Structure |
+1. **EU work is blocked** (waiting on external input, hardware, etc.)
+2. **You want a fun coding break** from business tasks
+3. **EU MVP is feature-complete** and you're ahead of sales
 
-### Batch 3
-| Terminal | Issue | Ticket |
-|----------|-------|--------|
-| 1 | #16 | RESEARCH-004: Deployment Model Research |
-| 2 | #11 | INVESTOR-004: VC Meeting Prep |
-| 3 | #1 | DEMO-001: Lab Space Setup |
+### WT Tickets (gym-vision repo)
+```bash
+gh issue list --repo joshuabl97/gym-vision --state open --label "track:wt"
+```
 
-### Batch 4
-| Terminal | Issue | Ticket |
-|----------|-------|--------|
-| 1 | #17 | RESEARCH-005: Target Segment Analysis |
-| 2 | #12 | INVESTOR-005: Elevator Pitch & Founder Story |
-| 3 | #2 | DEMO-002: Hardware Finalization |
-
-### Batch 5
-| Terminal | Issue | Ticket |
-|----------|-------|--------|
-| 1 | #18 | RESEARCH-006: Demo Lab Cost Analysis |
-| 2 | #19 | RESEARCH-007: Platform vs White-Label Validation |
-| 3 | #4 | CONTENT-001: Demo Video Concept |
-
-### Batch 6
-| Terminal | Issue | Ticket |
-|----------|-------|--------|
-| 1 | #24 | RESEARCH-012: Moat & Defensibility Strategy |
-| 2 | #5 | CONTENT-002: Video Production |
+### WT Quick Start
+```bash
+cd /home/josh/Code/gym-vision
+claude "I'm working on Workout Tracking for fun. Help me with WT-001 (Exercise Detection). This is secondary to EU work but I want to make progress on the tech."
+```
 
 ---
 
 ## Quick Reference Commands
 
-### Start a new agent session
+### EU GTM tickets
 ```bash
-cd /home/josh/Code/gym-genius-ops
-claude "Help me complete issue #<NUMBER> (<TICKET-ID>: <TITLE>). Read docs/ for context. Create deliverables in deliverables/<folder>/. Close the issue when done."
+gh issue list --repo joshuabl97/gym-genius-ops --state open --label "track:eu-gtm"
 ```
 
-### Check open high-priority tickets
+### EU technical tickets
 ```bash
-gh issue list --repo joshuabl97/gym-genius-ops --state open --label "priority:high"
+gh issue list --repo joshuabl97/gym-vision --state open --label "track:eu"
 ```
 
-### Check tickets by agent
+### WT tickets (secondary)
 ```bash
-gh project item-list 2 --owner joshuabl97 --limit 50 --format json | jq -r '.items | group_by(.agent) | .[] | "\n\(.[0].agent // "Unassigned"):", (.[] | "  #\(.content.number): \(.title)")'
+gh issue list --repo joshuabl97/gym-vision --state open --label "track:wt"
 ```
 
-### Sync project fields after label changes
-```bash
-/home/josh/Code/gym-genius-ops/scripts/update-project-fields.sh
-```
-
-### View deliverables
-```bash
-ls -la deliverables/*/
-```
+### View project board
+Open https://github.com/users/joshuabl97/projects/2 for GTM tickets.
 
 ---
 
@@ -173,16 +183,16 @@ ls -la deliverables/*/
 ```
 gym-genius-ops/
 ├── docs/
-│   ├── gym_genius_action_plan.md      # Full ticket breakdown
-│   ├── gym_genius_strategic_questions.md  # 30 Q&A shaping strategy
-│   └── gym_genius_executive_summary.md    # One-pager overview
+│   ├── gym_genius_action_plan.md      # EU-first strategy
+│   ├── gym_genius_strategic_questions.md  # Business decisions
+│   └── gym_genius_executive_summary.md    # Overview
 ├── deliverables/
-│   ├── research/     # Research agent outputs
-│   ├── investor/     # Investor agent outputs
-│   ├── partner/      # Partner agent outputs
-│   └── content/      # Content/demo agent outputs
+│   ├── eu-sales/      # EU value prop, pricing, sales playbook
+│   ├── investor/      # Pitch deck, financial model
+│   ├── partner/       # Partnership materials, pilot docs
+│   └── research/      # Market research, competitive analysis
 ├── scripts/
-│   └── update-project-fields.sh  # Sync labels to project fields
+│   └── update-project-fields.sh
 ├── OPERATOR_GUIDE.md  # This file
 └── README.md
 ```
@@ -191,16 +201,21 @@ gym-genius-ops/
 
 ## Tips
 
-1. **Let agents work autonomously** - Don't interrupt unless they ask questions
-2. **Review before committing** - Check deliverables make sense before pushing
-3. **Use the project board** - The "By Agent" view shows workload at a glance
-4. **Dependent tickets** - Some tickets (like #10, #11) depend on earlier work (#8). The batch order accounts for this.
-5. **Context matters** - Agents read `docs/` for context. Keep those files updated.
+1. **EU first, always** - Unless EU work is blocked, prioritize EU tickets
+2. **WT is for fun** - Don't feel guilty about WT work, it's a passion project
+3. **Context in docs/** - Agents read strategy docs for context. Keep them updated.
+4. **Tickets marked `status:needs-update`** need content rewritten for EU focus
+5. **Simpler demo for EU** - EU demo is easier than WT (no multi-person tracking needed)
 
 ---
 
 ## Getting Help
 
 - **Claude Code issues:** https://github.com/anthropics/claude-code/issues
-- **Project board:** https://github.com/users/joshuabl97/projects/2
+- **GTM Project board:** https://github.com/users/joshuabl97/projects/2
+- **Technical Project board:** https://github.com/users/joshuabl97/projects/1
 - **Strategy docs:** See `docs/` folder
+
+---
+
+*Strategy: Ship EU for revenue, build WT for fun.*
