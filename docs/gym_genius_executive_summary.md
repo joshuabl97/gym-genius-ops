@@ -2,96 +2,145 @@
 
 ## One-Liner
 
-Automatic workout tracking for commercial gyms—computer vision that gives members the training log they'd never write themselves.
+Equipment utilization analytics for commercial gyms—with automatic workout tracking coming next.
+
+---
+
+## Dual-Track Strategy
+
+| Track | Priority | Focus |
+|-------|----------|-------|
+| **Equipment Utilization (EU)** | PRIMARY | B2B analytics for gym operators—ship for revenue |
+| **Workout Tracking (WT)** | SECONDARY | Member experience—build for fun, future upsell |
 
 ---
 
 ## The Problem
 
-Gym members want to track their workouts but don't. Manual logging is tedious, inconsistent, and most people give up. Meanwhile, gyms struggle with member churn and have no insight into how their space is actually used.
+**For Gym Operators (PRIMARY):**
+Gym owners have no visibility into how their equipment is actually used. They buy expensive machines based on gut feel, can't optimize floor layouts, and don't know peak utilization patterns. Equipment sits idle while members wait for popular stations.
 
-**The competition is apathy, not other apps.**
+**For Members (SECONDARY):**
+Members want to track their workouts but don't. Manual logging is tedious, inconsistent, and most people give up.
 
 ---
 
 ## The Solution
 
-Gym Genius uses computer vision to automatically track workouts—sets, reps, weight, rest times—and delivers insights to members without them lifting a finger (except the weights).
+### Equipment Utilization (PRIMARY)
+
+Computer vision that tracks equipment usage in real-time:
+- **Utilization heatmaps:** Which equipment is used when
+- **Peak hour analysis:** Optimize staffing and member flow
+- **ROI insights:** Know which equipment justifies its floor space
+- **Capacity planning:** Data-driven equipment purchasing
+
+**For gym operators:** Replace gut feel with data. Optimize equipment ROI and member experience.
+
+### Workout Tracking (SECONDARY)
+
+Automatic workout tracking—sets, reps, weight, rest times—without members lifting a finger (except the weights).
 
 **For members:** The training log they always wanted but never maintained. Progress tracking, recovery insights, PR celebrations.
 
-**For gyms:** Member retention ("their data lives here"), premium differentiation, and operational insights (equipment usage, trainer optimization).
+**Future upsell:** Once EU is deployed, add WT as premium feature.
 
 ---
 
 ## Why Now
 
 1. **Tech cost reduced** — Edge compute and cameras now affordable for gym-scale deployment
-2. **AI accuracy crossed threshold** — Pose estimation reliable enough for production
+2. **AI accuracy crossed threshold** — Pose estimation and object detection reliable enough for production
 3. **Big players focused elsewhere** — Enterprise CV companies chasing bigger markets; gym niche is ours
 
 ---
 
 ## Business Model
 
-**Platform + Data hybrid** (think: Strava for strength training)
+### Equipment Utilization (Primary Revenue)
 
 | Revenue Stream | Description |
 |----------------|-------------|
-| Hardware lease | ~$300/mo per gym (cameras + edge compute) |
-| Software subscription | ~$500/mo per gym |
-| Premium member tier | Gym sets price, keeps revenue (reduces their net cost) |
+| Hardware lease | ~$200-300/mo per gym (cameras + edge compute) |
+| Software subscription | ~$300-500/mo per gym |
 
-**Target:** Up-market premium gyms (Equinox, Lifetime, high-end independents)
+**Target:** Regional gym chains and premium independents looking for operational insights.
+
+**Value prop:** "Know which equipment to buy, where to put it, and when it's used."
+
+### Workout Tracking (Future Revenue)
+
+| Revenue Stream | Description |
+|----------------|-------------|
+| Premium member tier | Gym sets price, keeps revenue (reduces their net cost) |
+| Platform subscription | Members pay for cross-gym data portability |
+
+**Target:** Premium gyms (Equinox, Lifetime, high-end independents) who want member differentiation.
 
 ---
 
 ## Key Differentiators
 
+### Equipment Utilization
+- **Zone-based tracking:** Define equipment zones, get utilization data
+- **No hardware changes for gyms:** Works with standard cameras
+- **Privacy-first:** No video stored, just occupancy data
+- **Simpler than alternatives:** Not trying to identify exercises, just presence
+
+### Workout Tracking (Future)
 - **Automatic** — Zero friction for members, data just appears
 - **Platform** — Member accounts work across gyms, data portability
-- **Privacy-first** — No video stored, opt-in consent, on-premise processing
-- **Multi-person** — Track 4+ people simultaneously (not just 1:1 training)
-- **Weight detection** — Knowing "10 reps" is table stakes; knowing "10 reps at 185 lbs" is valuable
+- **Multi-person** — Track 4+ people simultaneously
+- **Weight detection** — Knowing "10 reps at 185 lbs" is valuable
 
 ---
 
 ## Go-to-Market
 
-**Two parallel paths to first partner:**
+### Phase 1: EU Pilots (Now)
+Land 2-3 gym pilots for Equipment Utilization. Prove ROI with real data.
 
-| Path | Target | Pros | Cons |
-|------|--------|------|------|
-| **Small Partner** | High-end independent gym | Fast iteration, less approval, hands-on access | Less brand recognition |
-| **Equinox** | Premium chain via intro | Brand credibility, reference customer | Slower approval, less flexibility |
+| Target | Why |
+|--------|-----|
+| Regional chains (3-15 locations) | Decision-maker accessible, can scale if successful |
+| Premium independents | Fast decisions, hands-on partnership |
+| University rec centers | Budget for analytics, modernization mandates |
 
-**Preference:** Small partner first—allows full focus on product iteration without enterprise bureaucracy. Equinox as parallel credibility play.
+### Phase 2: EU Revenue (Months 3-12)
+Convert pilots to paid. Expand to similar gyms. Build case studies.
 
-| Phase | Strategy |
-|-------|----------|
-| 0→1 | Land one small premium gym partner (fast iteration) |
-| 1→10 | Pilots with independents + leverage Equinox intro |
-| 10→100 | Expand successful pilots to chains/regions |
+### Phase 3: Add Workout Tracking (Year 2+)
+Once EU is generating revenue, add WT as premium upsell to existing customers.
 
 ---
 
 ## Competitive Landscape
+
+### Equipment Utilization Competitors
+
+| Player | Model | Our Advantage |
+|--------|-------|---------------|
+| Manual counting | Staff with clickers | We're automatic, always-on |
+| Member check-in data | Mindbody, ABC | We track actual equipment use, not just visits |
+| IoT sensors | Per-equipment sensors | We're cheaper, no per-machine hardware |
+| Generic CV analytics | Retail people counters | We understand gym context |
+
+### Workout Tracking Competitors (Future)
 
 | Player | Model | Our Advantage |
 |--------|-------|---------------|
 | Tempo, Tonal, Mirror | B2C hardware | We're B2B (no consumer fickleness) |
 | Manual apps (Strong, Hevy) | User does work | We're automatic |
 | Smart equipment | Equipment-specific | We work with any equipment |
-| Wearables | General activity | We count reps and weight |
 
 ---
 
 ## Traction & Status
 
-- Working single-person tracking demo
-- Rebuilding codebase for multi-person scalability
-- Equinox introduction in progress
-- Fit-tech VC meeting upcoming
+- Working zone-based occupancy detection
+- Multi-person tracking operational
+- Dashboard with real-time utilization views
+- Equinox introduction in progress (for WT, may pivot to EU)
 
 ---
 
@@ -106,21 +155,29 @@ Gym Genius uses computer vision to automatically track workouts—sets, reps, we
 
 ## The Ask
 
-Building toward:
-1. Complete multi-person demo with weight detection
-2. Viral demo content
-3. First pilot partnership
-4. Seed funding to accelerate
+### Near-term (EU Focus)
+1. Land 2-3 EU pilot partnerships
+2. Prove equipment utilization ROI
+3. Convert pilots to paid customers
+4. Build case studies for expansion
+
+### Medium-term
+1. Seed funding to accelerate EU sales
+2. Expand to 20+ gyms
+3. Add Workout Tracking as premium feature
 
 ---
 
 ## Key Metrics
 
-**North Star:** Gym owners who want 2+ meetings (genuine interest signal)
+### EU Metrics (Primary)
+- **Pilot conversions:** Pilots that become paying customers
+- **Equipment ROI demonstrated:** $ saved or revenue generated per gym
+- **Expansion rate:** Gyms adding locations after successful pilot
 
-**Demo Success:** Works reliably, looks impressive
-
-**PMF Signal:** Multiple gyms asking for pilots without heavy outbound
+### WT Metrics (Future)
+- **North Star:** Gym owners who want 2+ meetings (genuine interest signal)
+- **PMF Signal:** Multiple gyms asking for pilots without heavy outbound
 
 ---
 
@@ -128,10 +185,12 @@ Building toward:
 
 | Document | Purpose |
 |----------|---------|
-| `gym_genius_action_plan.md` | Full ticket breakdown by workstream |
-| `gym_genius_strategic_questions.md` | 30 questions with answers |
+| `gym_genius_action_plan.md` | EU-first GTM strategy |
+| `gym_genius_strategic_questions.md` | Business decisions and rationale |
 | `gym_genius_executive_summary.md` | This document |
 
 ---
 
-*Last updated: 2025-12-18*
+*Strategy: Ship EU for revenue, build WT for fun.*
+
+*Last updated: 2025-12-20*
