@@ -2,7 +2,7 @@
 
 Full step-by-step instructions to configure all agents for Gym Genius EU/WT dual-track development.
 
-**Last Updated:** 2025-12-20
+**Last Updated:** 2025-12-22
 
 ---
 
@@ -131,9 +131,26 @@ Does this technical work affect business knowledge?
 If any apply, note in your commit message: "GTM-UPDATE-NEEDED: <description>"
 ```
 
-### Notion API Reference
+### Notion MCP Server (Recommended)
 
-For agents needing to update Notion programmatically:
+A Notion MCP server is configured at the user level (`~/.claude.json`). All agents can use Notion MCP tools directly:
+
+```
+# Check available Notion MCP tools
+/mcp
+
+# Agents can use these MCP tools to:
+- Query the Tickets database
+- Update ticket status and notes
+- Read and update Wiki pages
+- Search across Notion content
+```
+
+**Note:** The MCP server uses the "Gym Genius Migration" integration. Ensure this integration has access to any databases you want agents to use (Connections > Connect to > Gym Genius Migration).
+
+### Notion API Reference (For Manual Calls)
+
+For agents needing to update Notion via direct API calls:
 ```bash
 # Notion Token (for API calls) - get from environment or password manager
 NOTION_TOKEN="$NOTION_TOKEN"  # Set via: export NOTION_TOKEN="your-token-here"
@@ -172,7 +189,11 @@ claude --version
 # 2. Verify GitHub CLI is authenticated
 gh auth status
 
-# 3. Verify you have all repositories cloned
+# 3. Verify Notion MCP server is configured
+claude mcp list
+# Should show: notion: https://mcp.notion.com/mcp (HTTP)
+
+# 4. Verify you have all repositories cloned
 ls ~/Code/gym-genius-ops
 ls ~/Code/gym-vision
 ls ~/Code/gym-vision-web
