@@ -15,9 +15,9 @@ Gym Genius provides equipment utilization analytics for fitness facilities using
 | Metric | Value |
 |--------|-------|
 | Monthly Software Price (weighted avg) | $476 |
-| Hardware Cost (Small Boutique) | $1,137 |
-| Year 1 Gross Margin | 58-72% |
-| LTV (12% churn) | $39,227 |
+| Hardware Cost (Small Boutique) | $2,365 |
+| Year 1 Gross Margin | 49-60% |
+| LTV (12% churn) | $39,473 |
 | LTV:CAC Ratio | 26:1 |
 | Break-even (Growth Phase) | 6 gyms |
 
@@ -29,8 +29,8 @@ Gym Genius provides equipment utilization analytics for fitness facilities using
 
 | Model | Description | Best For | Hardware Range |
 |-------|-------------|----------|----------------|
-| **Hybrid** | Leverage existing cameras + supplementary | Gyms with IP/PoE security | $1,137 - $2,419 |
-| **Full Install** | Complete camera system | New builds, analog-only | $2,155 - $15,178 |
+| **Hybrid** | Leverage existing cameras + supplementary | Gyms with IP/PoE security | $2,365 - $5,488 |
+| **Full Install** | Complete camera system | New builds, analog-only | $4,917 - $38,195 |
 
 ### Site Assessment Checklist
 
@@ -100,11 +100,11 @@ Gym Genius provides equipment utilization analytics for fitness facilities using
 
 **Cameras**
 
-| Camera | Price | Specs |
-|--------|-------|-------|
-| Reolink RLC-810A | $90 | 8MP, budget |
-| **Hikvision DS-2CD2143G2-I** | $140 | 4MP, commercial (default) |
-| Axis P1365-E | $400-500 | Premium, overkill |
+| Camera | Price | Profile | Specs |
+|--------|-------|---------|-------|
+| **Ubiquiti AI 360** | $419 | Sleek dome | 360° fisheye, 5MP, AI-ready (default) |
+| Uniview IPC314SB | $150 | Low-profile mini | 4MP, 2.8" diameter, NDAA compliant |
+| Amcrest IP4M-1055E | $100 | Compact turret | 4MP, budget discrete option |
 
 **Infrastructure**
 
@@ -118,28 +118,28 @@ Gym Genius provides equipment utilization analytics for fitness facilities using
 
 | Segment | Compute | Cameras | Switch | Cabling | Contingency | **Total** |
 |---------|---------|---------|--------|---------|-------------|-----------|
-| Small Boutique | $249 | $560 (4x) | $75 | $150 | $103 | **$1,137** |
-| Mid Independent | $249 | $700 (5x) | $75 | $200 | $122 | **$1,346** |
-| Large Facility | $249 | $980 (7x) | $150 | $300 | $168 | **$1,847** |
-| Enterprise | $249 | $1,400 (10x) | $150 | $400 | $220 | **$2,419** |
+| Small Boutique | $249 | $1,676 (4x) | $75 | $150 | $215 | **$2,365** |
+| Mid Independent | $249 | $2,095 (5x) | $75 | $200 | $262 | **$2,881** |
+| Large Facility | $249 | $2,933 (7x) | $150 | $300 | $363 | **$3,995** |
+| Enterprise | $249 | $4,190 (10x) | $150 | $400 | $499 | **$5,488** |
 
 ### Model B: Full Install BOM
 
 | Segment | Compute | Cameras | Switch | Cabling | Contingency | **Total** |
 |---------|---------|---------|--------|---------|-------------|-----------|
-| Small Boutique | $249 | $1,260 (9x) | $150 | $300 | $196 | **$2,155** |
-| Mid Independent | $249 | $2,660 (19x) | $250 | $500 | $366 | **$4,025** |
-| Large Facility | $249 | $5,320 (38x) | $500 | $900 | $697 | **$7,666** |
-| Enterprise | $498 (2x) | $10,500 (75x) | $1,000 | $1,800 | $1,380 | **$15,178** |
+| Small Boutique | $249 | $3,771 (9x) | $150 | $300 | $447 | **$4,917** |
+| Mid Independent | $249 | $7,961 (19x) | $250 | $500 | $896 | **$9,856** |
+| Large Facility | $249 | $15,922 (38x) | $500 | $900 | $1,757 | **$19,328** |
+| Enterprise | $498 (2x) | $31,425 (75x) | $1,000 | $1,800 | $3,472 | **$38,195** |
 
 ### Hardware Cost Comparison
 
 | Segment | Hybrid | Full Install | Delta |
 |---------|--------|--------------|-------|
-| Small Boutique | $1,137 | $2,155 | +90% |
-| Mid Independent | $1,346 | $4,025 | +199% |
-| Large Facility | $1,847 | $7,666 | +315% |
-| Enterprise | $2,419 | $15,178 | +527% |
+| Small Boutique | $2,365 | $4,917 | +108% |
+| Mid Independent | $2,881 | $9,856 | +242% |
+| Large Facility | $3,995 | $19,328 | +384% |
+| Enterprise | $5,488 | $38,195 | +596% |
 
 ---
 
@@ -186,28 +186,28 @@ Hardware Price = Hardware Cost × 1.20 (20% markup)
 
 | Segment | Cost | Customer Price |
 |---------|------|----------------|
-| Small Boutique | $1,137 | $1,364 |
-| Mid Independent | $1,346 | $1,615 |
-| Large Facility | $1,847 | $2,216 |
-| Enterprise | $2,419 | $2,903 |
+| Small Boutique | $2,365 | $2,838 |
+| Mid Independent | $2,881 | $3,457 |
+| Large Facility | $3,995 | $4,794 |
+| Enterprise | $5,488 | $6,586 |
 
 **Full Install (20% markup)**
 
 | Segment | Cost | Customer Price |
 |---------|------|----------------|
-| Small Boutique | $2,155 | $2,586 |
-| Mid Independent | $4,025 | $4,830 |
-| Large Facility | $7,666 | $9,199 |
-| Enterprise | $15,178 | $18,214 |
+| Small Boutique | $4,917 | $5,900 |
+| Mid Independent | $9,856 | $11,827 |
+| Large Facility | $19,328 | $23,194 |
+| Enterprise | $38,195 | $45,834 |
 
 **Full Install Lease Option (36-month amortization)**
 
 | Segment | Monthly HW Lease | Software (65%) | Total Monthly |
 |---------|------------------|----------------|---------------|
-| Small Boutique | $60 | $314 | $374 |
-| Mid Independent | $112 | $388 | $500 |
-| Large Facility | $213 | $523 | $736 |
-| Enterprise | $422 | $799 | $1,221 |
+| Small Boutique | $164 | $314 | $478 |
+| Mid Independent | $329 | $388 | $717 |
+| Large Facility | $644 | $523 | $1,167 |
+| Enterprise | $1,273 | $799 | $2,072 |
 
 ---
 
@@ -217,28 +217,28 @@ Hardware Price = Hardware Cost × 1.20 (20% markup)
 
 | Segment | HW Revenue | Y1 SW Revenue | Y1 Total | Y1 Cost | Y1 Profit | Y1 Margin |
 |---------|------------|---------------|----------|---------|-----------|-----------|
-| Small Boutique | $1,364 | $3,768 | $5,132 | $2,169 | $2,963 | **58%** |
-| Mid Independent | $1,615 | $4,656 | $6,271 | $2,378 | $3,893 | **62%** |
-| Large Facility | $2,216 | $6,276 | $8,492 | $2,879 | $5,613 | **66%** |
-| Enterprise | $2,903 | $9,588 | $12,491 | $3,451 | $9,040 | **72%** |
+| Small Boutique | $2,838 | $3,768 | $6,606 | $3,397 | $3,209 | **49%** |
+| Mid Independent | $3,457 | $4,656 | $8,113 | $3,913 | $4,200 | **52%** |
+| Large Facility | $4,794 | $6,276 | $11,070 | $5,027 | $6,043 | **55%** |
+| Enterprise | $6,586 | $9,588 | $16,174 | $6,520 | $9,654 | **60%** |
 
 ### Full Install Model (65% Margin)
 
 | Segment | HW Revenue | Y1 SW Revenue | Y1 Total | Y1 Cost | Y1 Profit | Y1 Margin |
 |---------|------------|---------------|----------|---------|-----------|-----------|
-| Small Boutique | $2,586 | $3,768 | $6,354 | $3,187 | $3,167 | **50%** |
-| Mid Independent | $4,830 | $4,656 | $9,486 | $5,057 | $4,429 | **47%** |
-| Large Facility | $9,199 | $6,276 | $15,475 | $8,698 | $6,777 | **44%** |
-| Enterprise | $18,214 | $9,588 | $27,802 | $16,210 | $11,592 | **42%** |
+| Small Boutique | $5,900 | $3,768 | $9,668 | $5,949 | $3,719 | **38%** |
+| Mid Independent | $11,827 | $4,656 | $16,483 | $10,888 | $5,595 | **34%** |
+| Large Facility | $23,194 | $6,276 | $29,470 | $20,360 | $9,110 | **31%** |
+| Enterprise | $45,834 | $9,588 | $55,422 | $39,227 | $16,195 | **29%** |
 
 ### Model Comparison
 
 | Segment | Hybrid Margin | Full Install Margin | Delta |
 |---------|---------------|---------------------|-------|
-| Small Boutique | 58% | 50% | -8% |
-| Mid Independent | 62% | 47% | -15% |
-| Large Facility | 66% | 44% | -22% |
-| Enterprise | 72% | 42% | -30% |
+| Small Boutique | 49% | 38% | -11% |
+| Mid Independent | 52% | 34% | -18% |
+| Large Facility | 55% | 31% | -24% |
+| Enterprise | 60% | 29% | -31% |
 
 **Recommendation:** Prioritize Hybrid deployments for profitability.
 
@@ -249,8 +249,8 @@ Hardware Price = Hardware Cost × 1.20 (20% markup)
 | Avg Lifetime | 80 mo | 100 mo | 150 mo |
 | Lifetime Revenue | $38,080 | $47,600 | $71,400 |
 | Lifetime COGS | $6,880 | $8,600 | $12,900 |
-| Hardware Profit | $227 | $227 | $227 |
-| **LTV** | **$31,427** | **$39,227** | **$58,727** |
+| Hardware Profit | $473 | $473 | $473 |
+| **LTV** | **$31,673** | **$39,473** | **$58,973** |
 
 ### Customer Acquisition Cost
 
@@ -260,6 +260,8 @@ Hardware Price = Hardware Cost × 1.20 (20% markup)
 | Partner referral | $2,000 | 20:1 | 5.1 mo |
 | Inbound marketing | $3,000 | 13:1 | 7.7 mo |
 | **Blended Target** | **$1,500** | **26:1** | **3.8 mo** |
+
+*Note: LTV:CAC ratios remain strong due to recurring software revenue driving lifetime value.*
 
 ---
 
@@ -494,14 +496,14 @@ For landing major chain deals (10+ locations) when < $1M ARR:
 
 | Gyms in Pipeline | Float Needed |
 |------------------|--------------|
-| 2 | $2,274 |
-| 5 | $5,685 |
-| 10 | $11,370 |
+| 2 | $4,730 |
+| 5 | $11,825 |
+| 10 | $23,650 |
 
 **Solutions:**
-1. 50% customer deposit — reduces float to ~$5.7K for 10 gyms
+1. 50% customer deposit — reduces float to ~$11.8K for 10 gyms
 2. Revenue from early customers — self-fund growth
-3. Friends/family round — $25-50K covers 20+ gyms
+3. Friends/family round — $25-50K covers 10-20 gyms
 
 ---
 
@@ -538,28 +540,28 @@ For landing major chain deals (10+ locations) when < $1M ARR:
 
 | Segment | Y1 Revenue | Y1 Cost | Y1 Profit | Margin |
 |---------|------------|---------|-----------|--------|
-| Small Boutique | $3,992 | $2,169 | $1,823 | 46% |
-| Mid Independent | $4,867 | $2,378 | $2,489 | 51% |
-| Large Facility | $6,596 | $2,879 | $3,717 | 56% |
-| Enterprise | $9,599 | $3,451 | $6,148 | 64% |
+| Small Boutique | $5,466 | $3,397 | $2,069 | 38% |
+| Mid Independent | $6,709 | $3,913 | $2,796 | 42% |
+| Large Facility | $9,186 | $5,027 | $4,159 | 45% |
+| Enterprise | $13,294 | $6,520 | $6,774 | 51% |
 
 **65% Margin**
 
 | Segment | Y1 Revenue | Y1 Cost | Y1 Profit | Margin |
 |---------|------------|---------|-----------|--------|
-| Small Boutique | $5,132 | $2,169 | $2,963 | 58% |
-| Mid Independent | $6,271 | $2,378 | $3,893 | 62% |
-| Large Facility | $8,492 | $2,879 | $5,613 | 66% |
-| Enterprise | $12,491 | $3,451 | $9,040 | 72% |
+| Small Boutique | $6,606 | $3,397 | $3,209 | 49% |
+| Mid Independent | $8,113 | $3,913 | $4,200 | 52% |
+| Large Facility | $11,070 | $5,027 | $6,043 | 55% |
+| Enterprise | $16,174 | $6,520 | $9,654 | 60% |
 
 **80% Margin**
 
 | Segment | Y1 Revenue | Y1 Cost | Y1 Profit | Margin |
 |---------|------------|---------|-----------|--------|
-| Small Boutique | $7,940 | $2,169 | $5,771 | 73% |
-| Mid Independent | $9,739 | $2,378 | $7,361 | 76% |
-| Large Facility | $13,172 | $2,879 | $10,293 | 78% |
-| Enterprise | $19,643 | $3,451 | $16,192 | 82% |
+| Small Boutique | $9,414 | $3,397 | $6,017 | 64% |
+| Mid Independent | $11,581 | $3,913 | $7,668 | 66% |
+| Large Facility | $15,762 | $5,027 | $10,735 | 68% |
+| Enterprise | $23,362 | $6,520 | $16,842 | 72% |
 
 ### Full Install Model — All Margin Tiers
 
@@ -567,28 +569,28 @@ For landing major chain deals (10+ locations) when < $1M ARR:
 
 | Segment | Y1 Revenue | Y1 Cost | Y1 Profit | Margin |
 |---------|------------|---------|-----------|--------|
-| Small Boutique | $5,214 | $3,187 | $2,027 | 39% |
-| Mid Independent | $8,082 | $5,057 | $3,025 | 37% |
-| Large Facility | $13,579 | $8,698 | $4,881 | 36% |
-| Enterprise | $24,910 | $16,210 | $8,700 | 35% |
+| Small Boutique | $8,528 | $5,949 | $2,579 | 30% |
+| Mid Independent | $15,079 | $10,888 | $4,191 | 28% |
+| Large Facility | $27,586 | $20,360 | $7,226 | 26% |
+| Enterprise | $52,542 | $39,227 | $13,315 | 25% |
 
 **65% Margin**
 
 | Segment | Y1 Revenue | Y1 Cost | Y1 Profit | Margin |
 |---------|------------|---------|-----------|--------|
-| Small Boutique | $6,354 | $3,187 | $3,167 | 50% |
-| Mid Independent | $9,486 | $5,057 | $4,429 | 47% |
-| Large Facility | $15,475 | $8,698 | $6,777 | 44% |
-| Enterprise | $27,802 | $16,210 | $11,592 | 42% |
+| Small Boutique | $9,668 | $5,949 | $3,719 | 38% |
+| Mid Independent | $16,483 | $10,888 | $5,595 | 34% |
+| Large Facility | $29,470 | $20,360 | $9,110 | 31% |
+| Enterprise | $55,422 | $39,227 | $16,195 | 29% |
 
 **80% Margin**
 
 | Segment | Y1 Revenue | Y1 Cost | Y1 Profit | Margin |
 |---------|------------|---------|-----------|--------|
-| Small Boutique | $9,162 | $3,187 | $5,975 | 65% |
-| Mid Independent | $12,954 | $5,057 | $7,897 | 61% |
-| Large Facility | $20,155 | $8,698 | $11,457 | 57% |
-| Enterprise | $34,954 | $16,210 | $18,744 | 54% |
+| Small Boutique | $12,476 | $5,949 | $6,527 | 52% |
+| Mid Independent | $19,951 | $10,888 | $9,063 | 45% |
+| Large Facility | $34,162 | $20,360 | $13,802 | 40% |
+| Enterprise | $62,610 | $39,227 | $23,383 | 37% |
 
 ---
 
@@ -597,8 +599,9 @@ For landing major chain deals (10+ locations) when < $1M ARR:
 | Component | Source | Price | Link |
 |-----------|--------|-------|------|
 | Jetson Orin Nano Super | Seeed Studio | $249 | seeedstudio.com |
-| Hikvision DS-2CD2143G2-I | HIKD | $125-156 | hikdistribution.com |
-| Reolink RLC-810A | Reolink | $90 | reolink.com |
+| **Ubiquiti AI 360** | B&H Photo | $419 | bhphotovideo.com |
+| Uniview IPC314SB | Network Camera Store | $150 | networkcamerastore.com |
+| Amcrest IP4M-1055E | Amazon | $100 | amazon.com |
 | Hailo-8 M.2 | Waveshare | $180 | waveshare.com |
 
 ---

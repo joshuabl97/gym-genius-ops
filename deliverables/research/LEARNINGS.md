@@ -23,9 +23,11 @@ Knowledge accumulated across research tasks. Update this after each task.
 - Original model had Orin NX at $249 (error - that was Nano Super pricing)
 
 **Cameras (validated pricing):**
-- Hikvision DS-2CD2143G2-IU: $140 (was estimated $300)
-- Reolink RLC-820A: $90 (budget option)
+- Ubiquiti AI 360: $419 (360° fisheye, sleek profile, AI-ready) - DEFAULT
+- Uniview IPC314SB: $150 (low-profile mini dome, NDAA compliant) - discrete option
+- Amcrest IP4M-1055E: $100 (compact turret) - budget discrete option
 - Camera density: 1 camera per 600 sqft for equipment zone coverage
+- Note: Hikvision/Reolink cameras are bulky - switched to Ubiquiti for aesthetics
 
 **Key Insight:** At 1 FPS sampling (vs 30 FPS), compute requirements drop 30x, making Orin Nano Super viable for most deployments
 
