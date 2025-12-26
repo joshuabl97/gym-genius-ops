@@ -1,4 +1,4 @@
-# Gym Genius Equipment Utilization - Financial Model
+# Uzzage — Gym Equipment Monitoring - Financial Model
 
 > **Status:** Final Draft
 > **Last Updated:** 2025-12-22
@@ -8,7 +8,7 @@
 
 ## Executive Summary
 
-Gym Genius provides equipment utilization analytics for fitness facilities using computer vision. This model analyzes two deployment approaches with validated hardware costs and multi-margin pricing scenarios.
+Uzzage provides equipment utilization analytics for fitness facilities using computer vision. This model analyzes three deployment approaches with validated hardware costs and multi-margin pricing scenarios.
 
 ### Key Metrics (65% Margin, Hybrid Deployment)
 
@@ -23,14 +23,45 @@ Gym Genius provides equipment utilization analytics for fitness facilities using
 
 ---
 
+## Three Packages (Customer-Facing)
+
+| Package | What You Get | Upfront | Monthly |
+|---------|--------------|---------|---------|
+| **Connect** | We integrate with your existing cameras | $359-$718 | $314-$799 |
+| **Enhance** | Your cameras + a few more for full coverage | $2,838-$6,586 | $314-$799 |
+| **Complete** | Full camera system, turnkey installation | $5,900-$45,834 | $314-$799 |
+
+**Which package is right for you?**
+
+| If you have... | Choose |
+|----------------|--------|
+| Modern IP cameras (Meraki, Ubiquiti, Axis) covering all equipment | **Connect** |
+| Some cameras but gaps in equipment zones | **Enhance** |
+| Analog cameras, no cameras, or building new | **Complete** |
+
+*Monthly pricing based on facility size. Annual contracts.*
+
+---
+
 ## 1. Deployment Models
 
 ### Overview
 
 | Model | Description | Best For | Hardware Range |
 |-------|-------------|----------|----------------|
-| **Hybrid** | Leverage existing cameras + supplementary | Gyms with IP/PoE security | $2,365 - $5,488 |
+| **BYOC** | Bring Your Own Cameras - edge compute + software only | Gyms with full IP/PoE coverage (Meraki, Ubiquiti, etc.) | $299 - $598 |
+| **Hybrid** | Leverage existing cameras + supplementary | Gyms with partial IP/PoE coverage | $2,365 - $5,488 |
 | **Full Install** | Complete camera system | New builds, analog-only | $4,917 - $38,195 |
+
+### Model Selection Decision Tree
+
+```
+Does gym have existing IP/PoE cameras?
+├── NO → Full Install
+└── YES → Do cameras cover all equipment zones?
+    ├── YES → BYOC (just edge compute + software)
+    └── NO → Hybrid (existing + supplementary cameras)
+```
 
 ### Site Assessment Checklist
 
@@ -114,6 +145,62 @@ Gym Genius provides equipment utilization analytics for fitness facilities using
 | 16-port PoE Switch | $150 |
 | 24-port PoE Switch | $250 |
 
+### Camera Compatibility (BYOC)
+
+**Verified Compatible Systems:**
+
+| Brand | Compatible Models | Notes |
+|-------|-------------------|-------|
+| **Ubiquiti UniFi** | G3, G4, G5, AI series | RTSP native, most common in upmarket gyms |
+| **Meraki MV** | MV12, MV22, MV32, MV72 | Requires API access, enterprise common |
+| **Axis** | M-series, P-series | RTSP/ONVIF, commercial standard |
+| **Hikvision** | DS-2CD series | RTSP native, cost-effective |
+| **Dahua** | IPC-HDW series | RTSP native, budget option |
+| **Verkada** | All models | API access required, cloud-first |
+| **Reolink** | RLC series (PoE) | RTSP native, prosumer |
+| **Hanwha (Samsung)** | Wisenet series | ONVIF compliant |
+
+**Compatibility Requirements:**
+
+| Requirement | Why |
+|-------------|-----|
+| RTSP or ONVIF support | Stream access for edge processing |
+| IP/PoE (not analog) | Network-based video feed |
+| 1080p minimum | Detection accuracy |
+| Equipment zone coverage | Must see the areas we're tracking |
+
+**Not Compatible:**
+
+| Type | Reason |
+|------|--------|
+| Analog/Coax cameras | No network stream, need Full Install |
+| Cloud-only (no local access) | Some Verkada configs, Ring commercial |
+| WiFi-only cameras | Unreliable for 24/7 monitoring |
+| Low-resolution (<720p) | Insufficient for accurate detection |
+
+---
+
+### Model C: BYOC BOM (Bring Your Own Cameras)
+
+**Customer already has compatible IP/PoE cameras covering equipment zones.**
+
+| Segment | Compute | Switch | Cabling | Contingency | **Total** |
+|---------|---------|--------|---------|-------------|-----------|
+| Small Boutique | $249 | $0* | $0* | $50 | **$299** |
+| Mid Independent | $249 | $0* | $0* | $50 | **$299** |
+| Large Facility | $249 | $0* | $50 | $50 | **$349** |
+| Enterprise | $498 (2x) | $0* | $50 | $50 | **$598** |
+
+*Customer's existing infrastructure used
+
+**BYOC Eligibility Criteria:**
+- Existing cameras cover 100% of equipment zones (no gaps)
+- All cameras are IP/PoE with RTSP or ONVIF access
+- Customer grants network access for edge device
+- Minimum 1080p resolution
+
+---
+
 ### Model A: Hybrid BOM
 
 | Segment | Compute | Cameras | Switch | Cabling | Contingency | **Total** |
@@ -134,12 +221,21 @@ Gym Genius provides equipment utilization analytics for fitness facilities using
 
 ### Hardware Cost Comparison
 
-| Segment | Hybrid | Full Install | Delta |
-|---------|--------|--------------|-------|
-| Small Boutique | $2,365 | $4,917 | +108% |
-| Mid Independent | $2,881 | $9,856 | +242% |
-| Large Facility | $3,995 | $19,328 | +384% |
-| Enterprise | $5,488 | $38,195 | +596% |
+| Segment | BYOC | Hybrid | Full Install |
+|---------|------|--------|--------------|
+| Small Boutique | $299 | $2,365 | $4,917 |
+| Mid Independent | $299 | $2,881 | $9,856 |
+| Large Facility | $349 | $3,995 | $19,328 |
+| Enterprise | $598 | $5,488 | $38,195 |
+
+**Cost Savings vs Full Install:**
+
+| Segment | BYOC Savings | Hybrid Savings |
+|---------|--------------|----------------|
+| Small Boutique | 94% | 52% |
+| Mid Independent | 97% | 71% |
+| Large Facility | 98% | 79% |
+| Enterprise | 98% | 86% |
 
 ---
 
@@ -182,6 +278,15 @@ Hardware Price = Hardware Cost × 1.20 (20% markup)
 
 ### Hardware Pricing
 
+**BYOC (20% markup)**
+
+| Segment | Cost | Customer Price |
+|---------|------|----------------|
+| Small Boutique | $299 | $359 |
+| Mid Independent | $299 | $359 |
+| Large Facility | $349 | $419 |
+| Enterprise | $598 | $718 |
+
 **Hybrid (20% markup)**
 
 | Segment | Cost | Customer Price |
@@ -213,6 +318,17 @@ Hardware Price = Hardware Cost × 1.20 (20% markup)
 
 ## 6. Unit Economics
 
+### BYOC Model (65% Margin)
+
+| Segment | HW Revenue | Y1 SW Revenue | Y1 Total | Y1 Cost | Y1 Profit | Y1 Margin |
+|---------|------------|---------------|----------|---------|-----------|-----------|
+| Small Boutique | $359 | $3,768 | $4,127 | $1,331 | $2,796 | **68%** |
+| Mid Independent | $359 | $4,656 | $5,015 | $1,331 | $3,684 | **73%** |
+| Large Facility | $419 | $6,276 | $6,695 | $1,381 | $5,314 | **79%** |
+| Enterprise | $718 | $9,588 | $10,306 | $1,630 | $8,676 | **84%** |
+
+*BYOC has highest margins due to minimal hardware investment.*
+
 ### Hybrid Model (65% Margin)
 
 | Segment | HW Revenue | Y1 SW Revenue | Y1 Total | Y1 Cost | Y1 Profit | Y1 Margin |
@@ -233,14 +349,19 @@ Hardware Price = Hardware Cost × 1.20 (20% markup)
 
 ### Model Comparison
 
-| Segment | Hybrid Margin | Full Install Margin | Delta |
-|---------|---------------|---------------------|-------|
-| Small Boutique | 49% | 38% | -11% |
-| Mid Independent | 52% | 34% | -18% |
-| Large Facility | 55% | 31% | -24% |
-| Enterprise | 60% | 29% | -31% |
+| Segment | BYOC Margin | Hybrid Margin | Full Install Margin |
+|---------|-------------|---------------|---------------------|
+| Small Boutique | **68%** | 49% | 38% |
+| Mid Independent | **73%** | 52% | 34% |
+| Large Facility | **79%** | 55% | 31% |
+| Enterprise | **84%** | 60% | 29% |
 
-**Recommendation:** Prioritize Hybrid deployments for profitability.
+**Recommendation:** Prioritize BYOC where eligible, then Hybrid. Full Install only when necessary.
+
+**Deployment Priority:**
+1. **BYOC** — Highest margin, fastest install, lowest risk
+2. **Hybrid** — Good margin, leverages existing investment
+3. **Full Install** — Lowest margin, but captures greenfield opportunities
 
 ### Lifetime Value
 
@@ -302,7 +423,103 @@ Hardware Price = Hardware Cost × 1.20 (20% markup)
 
 ---
 
-## 8. Three-Year Projections
+## 8. Path to $1M ARR
+
+### Gyms Required by Margin Tier
+
+| Margin | Avg Monthly Price | Monthly COGS | Gross Profit/Gym | Gyms to $1M ARR |
+|--------|-------------------|--------------|------------------|-----------------|
+| 50% | $332 | $86 | $246 | **251 gyms** |
+| 65% | $476 | $86 | $390 | **175 gyms** |
+| 80% | $831 | $86 | $745 | **100 gyms** |
+
+### Realistic Mix Scenario (65% Margin)
+
+**Assumptions:**
+- 30% BYOC (Connect) — gyms with existing cameras
+- 50% Hybrid (Enhance) — partial coverage, add cameras
+- 20% Full Install (Complete) — new builds, analog replacement
+
+**Path to 175 Gyms:**
+
+| Milestone | Gyms | BYOC | Hybrid | Full | MRR | ARR |
+|-----------|------|------|--------|------|-----|-----|
+| Pilot | 10 | 3 | 5 | 2 | $4,760 | $57K |
+| Traction | 25 | 8 | 12 | 5 | $11,900 | $143K |
+| Growth | 50 | 15 | 25 | 10 | $23,800 | $286K |
+| Scale | 100 | 30 | 50 | 20 | $47,600 | $571K |
+| **$1M ARR** | **175** | **53** | **87** | **35** | **$83,300** | **$1M** |
+
+### Company Valuation by Milestone
+
+| Milestone | ARR | Multiple | Valuation | Notes |
+|-----------|-----|----------|-----------|-------|
+| Pilot | $57K | 3-5x | **$170K-$285K** | Pre-PMF, proving concept |
+| Traction | $143K | 5-7x | **$715K-$1M** | Early PMF, repeatable sales |
+| Growth | $286K | 7-10x | **$2M-$2.9M** | Clear PMF, scaling |
+| Scale | $571K | 8-12x | **$4.6M-$6.9M** | Efficient growth, strong unit economics |
+| **$1M ARR** | **$1M** | **10-15x** | **$10M-$15M** | Proven model, path to profitability |
+
+**Multiple Justification:**
+
+| Factor | Impact on Multiple |
+|--------|-------------------|
+| 82% gross margin | +2-3x (excellent for vertical SaaS) |
+| Low churn (12%) | +1-2x (sticky B2B customers) |
+| Hardware revenue | -1x (less recurring than pure SaaS) |
+| Niche market | -1x (smaller TAM than horizontal) |
+| Capital efficient | +1-2x (bootstrapped, profitable) |
+
+**Realistic Range:** 8-12x ARR for a capital-efficient vertical SaaS with strong unit economics
+
+### Revenue by Deployment Type at $1M ARR
+
+| Type | Gyms | Avg Price | Monthly Rev | % of MRR |
+|------|------|-----------|-------------|----------|
+| BYOC (Connect) | 53 | $476 | $25,228 | 30% |
+| Hybrid (Enhance) | 87 | $476 | $41,412 | 50% |
+| Full Install (Complete) | 35 | $476 | $16,660 | 20% |
+| **Total** | **175** | **$476** | **$83,300** | **100%** |
+
+### Hardware Revenue at $1M ARR (Cumulative)
+
+| Type | Gyms | Avg HW Price | Total HW Rev |
+|------|------|--------------|--------------|
+| BYOC | 53 | $400 | $21,200 |
+| Hybrid | 87 | $3,800 | $330,600 |
+| Full Install | 35 | $15,000 | $525,000 |
+| **Total** | **175** | — | **$876,800** |
+
+### Profitability at $1M ARR
+
+| Line Item | Monthly | Annual |
+|-----------|---------|--------|
+| Software MRR | $83,300 | $1,000,000 |
+| Monthly COGS (175 × $86) | -$15,050 | -$180,600 |
+| **Gross Profit** | **$68,250** | **$819,000** |
+| Gross Margin | 82% | 82% |
+| Operating Expenses (Scale) | -$27,500 | -$330,000 |
+| **Net Profit** | **$40,750** | **$489,000** |
+| Net Margin | 49% | 49% |
+
+### Comparison: All Margin Tiers at $1M ARR
+
+| Metric | 50% Margin | 65% Margin | 80% Margin |
+|--------|------------|------------|------------|
+| Gyms needed | 251 | 175 | 100 |
+| Monthly price (avg) | $332 | $476 | $831 |
+| Monthly COGS/gym | $86 | $86 | $86 |
+| Total monthly COGS | $21,586 | $15,050 | $8,600 |
+| Gross profit/mo | $61,747 | $68,283 | $74,733 |
+| Scale OpEx/mo | $27,500 | $27,500 | $27,500 |
+| Net profit/mo | $34,247 | $40,783 | $47,233 |
+| Net margin | 41% | 49% | 57% |
+
+**Key insight:** Higher margins mean fewer gyms to $1M, but also potentially harder sales. 65% is the balance point.
+
+---
+
+## 9. Three-Year Projections
 
 ### Year 1: Pilot Phase (10 gyms)
 
@@ -533,6 +750,35 @@ For landing major chain deals (10+ locations) when < $1M ARR:
 ---
 
 ## Appendix A: Multi-Margin Unit Economics
+
+### BYOC Model — All Margin Tiers
+
+**50% Margin**
+
+| Segment | Y1 Revenue | Y1 Cost | Y1 Profit | Margin |
+|---------|------------|---------|-----------|--------|
+| Small Boutique | $2,987 | $1,331 | $1,656 | 55% |
+| Mid Independent | $3,611 | $1,331 | $2,280 | 63% |
+| Large Facility | $4,811 | $1,381 | $3,430 | 71% |
+| Enterprise | $7,426 | $1,630 | $5,796 | 78% |
+
+**65% Margin**
+
+| Segment | Y1 Revenue | Y1 Cost | Y1 Profit | Margin |
+|---------|------------|---------|-----------|--------|
+| Small Boutique | $4,127 | $1,331 | $2,796 | 68% |
+| Mid Independent | $5,015 | $1,331 | $3,684 | 73% |
+| Large Facility | $6,695 | $1,381 | $5,314 | 79% |
+| Enterprise | $10,306 | $1,630 | $8,676 | 84% |
+
+**80% Margin**
+
+| Segment | Y1 Revenue | Y1 Cost | Y1 Profit | Margin |
+|---------|------------|---------|-----------|--------|
+| Small Boutique | $6,935 | $1,331 | $5,604 | 81% |
+| Mid Independent | $8,483 | $1,331 | $7,152 | 84% |
+| Large Facility | $11,387 | $1,381 | $10,006 | 88% |
+| Enterprise | $17,494 | $1,630 | $15,864 | 91% |
 
 ### Hybrid Model — All Margin Tiers
 

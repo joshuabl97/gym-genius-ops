@@ -6,8 +6,9 @@ Before marking this task complete:
    git add deliverables/business/ knowledge/
    git commit -m "Business: <brief description>"
    ```
-3. Close the GitHub issue:
+3. Update ticket status in Notion:
    ```
-   gh issue close <ISSUE_NUMBER> --repo joshuabl97/gym-genius-ops
+   # Mark ticket as complete with notes
+   ./scripts/notion-api.sh complete <TICKET_ID> "Brief completion summary"
    ```
 4. Summarize what was completed
